@@ -1,0 +1,5 @@
+[sqlfluff]
+
+# To list supported dialects, run "sqlfluff dialects".
+# https://docs.sqlfluff.com/en/stable/perma/dialects.html
+dialect = postgres
