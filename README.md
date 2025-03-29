@@ -4,9 +4,10 @@ My PostgreSQL playground.
 
 ## References
 
-- Documents: [postgresql.org/docs](https://www.postgresql.org/docs/current/index.html).
+- Official documents: [postgresql.org/docs](https://www.postgresql.org/docs/current/index.html).
+- CLI with autocompletion and syntax highlighting: [pgcli](https://github.com/dbcli/pgcli).
 - Linter and formatter: [sqlfluff](https://docs.sqlfluff.com/en/stable/index.html).
-- Langauge server: [sqls](https://github.com/sqls-server/sqls).
+- SQL Langauge server: [sqls](https://github.com/sqls-server/sqls).
 
 ## Prerequisites
 
