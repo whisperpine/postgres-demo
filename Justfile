@@ -1,2 +1,2 @@
 pgcli:
-    pgcli postgresql://devuser:devpassword@localhost:5432/myappdb
+    pgcli postgresql://devuser:devpassword@localhost:5432/mydb
