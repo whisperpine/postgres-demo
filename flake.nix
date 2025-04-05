@@ -22,6 +22,7 @@
         {
           default = pkgs.mkShell {
             packages = with pkgs; [
+              postgresql_17 # for `psql` command
               pgcli
               just
             ];
