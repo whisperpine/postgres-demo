@@ -2,4 +2,4 @@
 set dotenv-required
 
 pgcli:
-    pgcli ${DB_UI_MYDB}
+    pgcli ${DATABASE_URL}
