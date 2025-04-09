@@ -1,3 +1,5 @@
+-- tags: primary key, foreign key, unique, check, join.
+
 CREATE TABLE IF NOT EXISTS department (
     dept_id SERIAL PRIMARY KEY,
     dept_name VARCHAR(50) NOT NULL UNIQUE
