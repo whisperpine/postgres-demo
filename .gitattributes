@@ -1,0 +1,2 @@
+# Include sql in repo statistics.
+*.sql linguist-detectable
