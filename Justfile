@@ -16,3 +16,16 @@ backup:
 # restore postgres database
 restore:
     psql -f ${PGDATABASE}.bak
+
+# stop and delete the postgres database
+down:
+    @echo "Are you sure you want to delete the database? [y/n]"
+    @read -r response; if [ "$response" != "y" ] && [ "$response" != "Y" ]; then echo "Aborted"; exit 1; fi
+    docker compose down -v
+
+# delete the database and relaunch a new one
+new:
+    @echo "Are you sure you want to delete the database? [y/n]"
+    @read -r response; if [ "$response" != "y" ] && [ "$response" != "Y" ]; then echo "Aborted"; exit 1; fi
+    docker compose down -v
+    docker compose up -d
