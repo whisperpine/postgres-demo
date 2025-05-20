@@ -31,8 +31,11 @@ VALUES
 
 SELECT
     e.emp_name,
+    d.dept_name,
     e.emp_salary,
-    d.dept_name
+    avg(emp_salary) OVER w AS department_average
 FROM employee AS e
 INNER JOIN department AS d
-    ON e.emp_dept_id = d.dept_id;
+    ON e.emp_dept_id = d.dept_id
+WINDOW w AS (PARTITION BY e.emp_dept_id)
+ORDER BY d.dept_name DESC;
