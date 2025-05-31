@@ -5,9 +5,10 @@ services:
     environment:
       POSTGRES_USER: ${PGUSER} # default: postgres
       POSTGRES_PASSWORD: ${PGPASSWORD}
+      PGPORT: ${PGPORT}
       POSTGRES_DB: ${PGDATABASE}
     ports:
-      - "${PGPORT}:5432"
+      - "${PGPORT}:${PGPORT}"
     volumes:
       - postgres-data:/var/lib/postgresql/data
     restart: unless-stopped
