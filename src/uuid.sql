@@ -4,19 +4,19 @@
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 CREATE TABLE IF NOT EXISTS uuid_users (
-    u_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    u_name TEXT NOT NULL
+    user_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_name TEXT NOT NULL
 );
 
-INSERT INTO uuid_users (u_name)
+INSERT INTO uuid_users (user_name)
 VALUES ('amiao'), ('yahaha'), ('bili');
 
 SELECT
-    u_id AS id,
-    u_name AS name
+    user_id,
+    user_name
 FROM uuid_users LIMIT 20;
 
--- list installed extensions. 
+-- list installed extensions.
 -- (another way is by using "\dx" in pqcli).
 SELECT * FROM pg_extension;
 -- list all extensions including uninstalled ones.
