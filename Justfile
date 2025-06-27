@@ -17,6 +17,14 @@ backup:
 restore:
     psql -f ${PGDATABASE}.bak
 
+# lint sql files by sqlfluff
+lint PATH="":
+    sqlfluff lint {{PATH}}
+
+# fix linting errors found by sqlfluff
+fix PATH="":
+    sqlfluff fix
+
 # stop and delete the postgres database
 down:
     @echo "Are you sure you want to delete the database? [y/n]"

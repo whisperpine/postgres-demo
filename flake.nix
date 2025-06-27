@@ -23,8 +23,9 @@
           default = pkgs.mkShell {
             packages = with pkgs; [
               postgresql_17 # for `psql` command
-              pgcli
-              just
+              sqlfluff # sql linter and formatter
+              pgcli # an alternative to psql
+              just # just a command runner
             ];
           };
         }
