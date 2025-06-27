@@ -1,3 +1,5 @@
+-- tags: partition.
+
 CREATE TABLE IF NOT EXISTS events (
     event_id SERIAL,
     event_name TEXT NOT NULL,
