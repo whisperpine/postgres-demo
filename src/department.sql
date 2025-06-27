@@ -11,6 +11,8 @@ CREATE TABLE IF NOT EXISTS employee (
     emp_ssn VARCHAR(30) NOT NULL UNIQUE,
     emp_salary NUMERIC(9, 2) NOT NULL CHECK (emp_salary > 0),
     emp_dept_id INT REFERENCES department (dept_id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
 );
 
 INSERT INTO department (dept_name)
@@ -33,7 +35,7 @@ SELECT
     e.emp_name,
     d.dept_name,
     e.emp_salary,
-    avg(emp_salary) OVER w AS department_average
+    avg(e.emp_salary) OVER w AS dept_average
 FROM employee AS e
 INNER JOIN department AS d
     ON e.emp_dept_id = d.dept_id
