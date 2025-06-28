@@ -1,4 +1,4 @@
--- tags: primary key, foreign key, unique, check, join.
+-- tags: primary key, foreign key, unique, check, join, group by, CTE.
 
 CREATE TABLE IF NOT EXISTS department (
     dept_id SERIAL PRIMARY KEY,
@@ -41,3 +41,20 @@ INNER JOIN department AS d
     ON e.emp_dept_id = d.dept_id
 WINDOW w AS (PARTITION BY e.emp_dept_id)
 ORDER BY d.dept_name DESC;
+
+WITH grouped_emp AS (
+    SELECT
+        e.emp_dept_id,
+        count(*) AS emp_counts
+    FROM employee AS e
+    GROUP BY e.emp_dept_id
+)
+
+SELECT
+    d.dept_id,
+    d.dept_name,
+    g.emp_counts
+FROM department AS d
+INNER JOIN grouped_emp AS g
+    ON d.dept_id = g.emp_dept_id
+ORDER BY d.dept_id;
