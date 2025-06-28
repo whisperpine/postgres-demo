@@ -1,4 +1,4 @@
--- tags: inner join, left outer join, full outer join.
+-- tags: inner join, left outer join, full outer join, cross join.
 -- notes: RIGHT OUTER JOIN is deprecated by CV08 rule of sqlfluff.
 
 -- create customers table
@@ -58,3 +58,11 @@ SELECT
 FROM customers AS c
 FULL OUTER JOIN orders AS o
     ON c.id = o.customer_id;
+
+-- cross join
+SELECT
+    c.id,
+    c.name AS c_name,
+    o.amount
+FROM customers AS c
+CROSS JOIN orders AS o;
