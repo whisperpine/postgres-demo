@@ -3,26 +3,26 @@
 
 -- create customers table
 CREATE TABLE customers (
-    id SERIAL PRIMARY KEY,
-    name TEXT NOT NULL
+    customer_id SERIAL PRIMARY KEY,
+    customer_name VARCHAR(50) NOT NULL
 );
 
 -- create orders table
 CREATE TABLE orders (
-    id SERIAL PRIMARY KEY,
-    customer_id INT,
-    amount DECIMAL
+    order_id SERIAL PRIMARY KEY,
+    order_amount DECIMAL,
+    customer_id INT -- deliberately omitting foreign key to demo joins below
 );
 
 -- insert sample data into customers
-INSERT INTO customers (name)
+INSERT INTO customers (customer_name)
 VALUES
 ('amiao'),
 ('yahaha'),
 ('wowo');
 
 -- insert sample data into orders
-INSERT INTO orders (customer_id, amount)
+INSERT INTO orders (customer_id, order_amount)
 VALUES
 (1, 100.50),  -- amiao's order
 (1, 200.75),  -- amiao's second order
@@ -31,38 +31,38 @@ VALUES
 
 -- inner join
 SELECT
-    c.id AS customer_id,
-    c.name AS customer_name,
-    o.id AS order_id,
-    o.amount AS order_amount
+    c.customer_id,
+    c.customer_name,
+    o.order_id,
+    o.order_amount
 FROM customers AS c
 INNER JOIN orders AS o
-    ON c.id = o.customer_id;
+    ON c.customer_id = o.customer_id;
 
 -- left outer join
 SELECT
-    c.id AS customer_id,
-    c.name AS customer_name,
-    o.id AS order_id,
-    o.amount AS order_amount
+    c.customer_id,
+    c.customer_name,
+    o.order_id,
+    o.order_amount
 FROM customers AS c
 LEFT OUTER JOIN orders AS o
-    ON c.id = o.customer_id;
+    ON c.customer_id = o.customer_id;
 
 -- full outer join
 SELECT
-    c.id AS customer_id,
-    c.name AS customer_name,
-    o.id AS order_id,
-    o.amount AS order_amount
+    c.customer_id,
+    c.customer_name,
+    o.order_id,
+    o.order_amount
 FROM customers AS c
 FULL OUTER JOIN orders AS o
-    ON c.id = o.customer_id;
+    ON c.customer_id = o.customer_id;
 
 -- cross join
 SELECT
-    c.id,
-    c.name AS c_name,
-    o.amount
+    c.customer_id,
+    c.customer_name,
+    o.order_amount
 FROM customers AS c
 CROSS JOIN orders AS o;
