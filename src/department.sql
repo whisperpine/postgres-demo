@@ -1,5 +1,9 @@
 -- tags: primary key, foreign key, unique, check, join, group by, CTE.
 
+-- ======================================
+-- table declarations
+-- ======================================
+
 CREATE TABLE IF NOT EXISTS departments (
     dept_id SERIAL PRIMARY KEY,
     dept_name VARCHAR(50) NOT NULL UNIQUE
@@ -15,6 +19,11 @@ CREATE TABLE IF NOT EXISTS employees (
     ON DELETE CASCADE
 );
 
+
+-- ======================================
+-- data inserts
+-- ======================================
+
 INSERT INTO departments (dept_name)
 VALUES
 ('marketing'),
@@ -28,8 +37,10 @@ VALUES
 ('bili', '111-22-3333', 0.34, 2),
 ('zhihu', '123-12-1234', 150, 3);
 
--- SELECT * FROM departments LIMIT 20;
--- SELECT * FROM employees LIMIT 20;
+
+-- ======================================
+-- queries
+-- ======================================
 
 SELECT
     e.emp_name,
@@ -41,6 +52,14 @@ INNER JOIN departments AS d
     ON e.emp_dept_id = d.dept_id
 WINDOW w AS (PARTITION BY e.emp_dept_id)
 ORDER BY d.dept_name DESC;
+
+-- SELECT * FROM departments LIMIT 20;
+-- SELECT * FROM employees LIMIT 20;
+
+
+-- ======================================
+-- CTE (Common Table Expression)
+-- ======================================
 
 WITH grouped_emp AS (
     SELECT
@@ -58,3 +77,12 @@ FROM departments AS d
 INNER JOIN grouped_emp AS g
     ON d.dept_id = g.emp_dept_id
 ORDER BY d.dept_id;
+
+
+-- ======================================
+-- query plan
+-- ======================================
+
+ANALYZE VERBOSE employees;
+EXPLAIN SELECT * FROM employees;
+EXPLAIN ANALYZE SELECT * FROM employees;

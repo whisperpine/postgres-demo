@@ -1,6 +1,10 @@
 -- tags: inner join, left outer join, full outer join, cross join.
 -- notes: RIGHT OUTER JOIN is deprecated by CV08 rule of sqlfluff.
 
+-- ======================================
+-- table declarations
+-- ======================================
+
 -- create customers table
 CREATE TABLE customers (
     customer_id SERIAL PRIMARY KEY,
@@ -13,6 +17,11 @@ CREATE TABLE orders (
     order_amount DECIMAL,
     customer_id INT -- deliberately omitting foreign key to demo joins below
 );
+
+
+-- ======================================
+-- data inserts
+-- ======================================
 
 -- insert sample data into customers
 INSERT INTO customers (customer_name)
@@ -28,6 +37,11 @@ VALUES
 (1, 200.75),  -- amiao's second order
 (2, 150.00),  -- yahaha's order
 (4, 300.00);  -- order with no matching customer
+
+
+-- ======================================
+-- queries
+-- ======================================
 
 -- inner join
 SELECT

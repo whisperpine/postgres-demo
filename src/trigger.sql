@@ -1,5 +1,9 @@
 -- tags: trigger, function.
 
+-- ======================================
+-- table declarations
+-- ======================================
+
 -- create a table to store employee data
 CREATE TABLE employees (
     id SERIAL PRIMARY KEY,
@@ -15,6 +19,11 @@ CREATE TABLE employee_audit (
     action_time TIMESTAMP NOT NULL
 );
 
+
+-- ======================================
+-- function declarations
+-- ======================================
+
 -- create a function to handle the trigger logic
 CREATE OR REPLACE FUNCTION log_employee_insert()
 RETURNS TRIGGER AS $$
@@ -25,19 +34,30 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- create the trigger
+
+-- ======================================
+-- trigger
+-- ======================================
+
 CREATE TRIGGER employee_insert_trigger
 AFTER INSERT ON employees
 FOR EACH ROW
 EXECUTE FUNCTION log_employee_insert();
 
--- test the trigger
+
+-- ======================================
+-- data inserts
+-- ======================================
+
 INSERT INTO employees (name, salary)
 VALUES
 ('amiao', 50000),
 ('yahaha', 80000);
 
--- check the result
+
+-- ======================================
+-- queries
+-- ======================================
+
 SELECT * FROM employees;
--- check the audit table
 SELECT * FROM employee_audit;
