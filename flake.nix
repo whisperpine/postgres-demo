@@ -27,6 +27,11 @@
               pgcli # an alternative to psql
               just # just a command runner
             ];
+
+            shellHook = ''
+              # list containers backed by docker compose
+              docker compose ps --all
+            '';
           };
         }
       );
