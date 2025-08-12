@@ -41,8 +41,8 @@ just restore
 ## Recommendations
 
 - If you are using `nix`, use [nix-direnv](https://github.com/nix-community/nix-direnv)
-to load dev environment automatically.
+  to load dev environment automatically.
 - CLI with autocompletion and syntax highlighting: [pgcli](https://github.com/dbcli/pgcli)
-(as a alternative to `psql`).
+  (as a alternative to `psql`).
 - vim or neovim users may give a try to [vim-dadbod](https://github.com/tpope/vim-dadbod)
-and [vim-dadbod-ui](https://github.com/kristijanhusak/vim-dadbod-ui).
+  and [vim-dadbod-ui](https://github.com/kristijanhusak/vim-dadbod-ui).
