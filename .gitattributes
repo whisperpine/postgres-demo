@@ -1,2 +1,9 @@
 # Include sql in repo statistics.
 *.sql linguist-detectable
+
+# Remove files under ./husky from repo statistics.
+.husky/** -linguist-detectable
+# Remove flake.nix from repo statistics.
+flake.nix -linguist-detectable
+# Remove .envrc from repo statistics.
+.envrc -linguist-detectable
