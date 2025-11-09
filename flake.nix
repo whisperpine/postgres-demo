@@ -21,15 +21,20 @@
         { pkgs }:
         {
           default = pkgs.mkShell {
+            # The Nix packages installed in the dev environment.
             packages = with pkgs; [
               postgresql_17 # for `psql` command
               sqlfluff # sql linter and formatter
               pgcli # an alternative to psql
               just # just a command runner
             ];
-
+            # The shell script executed when the environment is activated.
             shellHook = ''
-              # list containers backed by docker compose
+              # Print the last modified date of "flake.lock".
+              stat flake.lock | grep "Modify" |
+                awk '{printf "\"flake.lock\" last modified on: %s", $2}' &&
+                echo " ($((($(date +%s) - $(stat -c %Y flake.lock)) / 86400)) days ago)"
+              # List containers backed by docker compose.
               docker compose ps --all
             '';
           };
