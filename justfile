@@ -4,6 +4,10 @@ set dotenv-required
 # These env vars are implicitly captured by pg_dump and psql:
 # PGUSER, PGPASSWORD, PGHOST, PGPORT, PGDATABASE.
 
+# list all available subcommands
+_default:
+  @just --list
+
 # back postgres database
 backup:
   # -c: Output commands to clean(drop) database objects prior to writing commands to create them.
