@@ -34,8 +34,6 @@
               stat flake.lock | grep "Modify" |
                 awk '{printf "\"flake.lock\" last modified on: %s", $2}' &&
                 echo " ($((($(date +%s) - $(stat -c %Y flake.lock)) / 86400)) days ago)"
-              # List containers backed by docker compose.
-              docker compose ps --all
             '';
           };
         }
