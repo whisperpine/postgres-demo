@@ -23,7 +23,7 @@
           default = pkgs.mkShellNoCC {
             # The Nix packages installed in the dev environment.
             packages = with pkgs; [
-              postgresql_17 # for `psql` command
+              postgresql_18 # for `psql` command
               sqlfluff # sql linter and formatter
               pgcli # an alternative to psql
               just # just a command runner
