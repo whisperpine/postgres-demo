@@ -1,17 +1,17 @@
--- tags: inner join, left outer join, full outer join, cross join.
--- notes: RIGHT OUTER JOIN is deprecated by CV08 rule of sqlfluff.
+-- Tags: inner join, left outer join, full outer join, cross join.
+-- Notes: RIGHT OUTER JOIN is deprecated by CV08 rule of sqlfluff.
 
--- ======================================
+-- ==================
 -- table declarations
--- ======================================
+-- ==================
 
--- create customers table
+-- Creates customers table.
 CREATE TABLE customers (
     customer_id SERIAL PRIMARY KEY,
     customer_name VARCHAR(50) NOT NULL
 );
 
--- create orders table
+-- Creates orders table.
 CREATE TABLE orders (
     order_id SERIAL PRIMARY KEY,
     order_amount DECIMAL,
@@ -19,18 +19,18 @@ CREATE TABLE orders (
 );
 
 
--- ======================================
+-- ============
 -- data inserts
--- ======================================
+-- ============
 
--- insert sample data into customers
+-- Inserts sample data into customers.
 INSERT INTO customers (customer_name)
 VALUES
 ('amiao'),
 ('yahaha'),
 ('wowo');
 
--- insert sample data into orders
+-- Insert sample data into orders.
 INSERT INTO orders (customer_id, order_amount)
 VALUES
 (1, 100.50),  -- amiao's order
@@ -39,11 +39,11 @@ VALUES
 (4, 300.00);  -- order with no matching customer
 
 
--- ======================================
+-- =======
 -- queries
--- ======================================
+-- =======
 
--- inner join
+-- Inner Join.
 SELECT
     c.customer_id,
     c.customer_name,
@@ -53,7 +53,7 @@ FROM customers AS c
 INNER JOIN orders AS o
     ON c.customer_id = o.customer_id;
 
--- left outer join
+-- Left Outer Join.
 SELECT
     c.customer_id,
     c.customer_name,
@@ -63,7 +63,7 @@ FROM customers AS c
 LEFT OUTER JOIN orders AS o
     ON c.customer_id = o.customer_id;
 
--- full outer join
+-- Full Outer Join.
 SELECT
     c.customer_id,
     c.customer_name,
@@ -73,7 +73,7 @@ FROM customers AS c
 FULL OUTER JOIN orders AS o
     ON c.customer_id = o.customer_id;
 
--- cross join
+-- Cross Join.
 SELECT
     c.customer_id,
     c.customer_name,

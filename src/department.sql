@@ -1,8 +1,8 @@
--- tags: primary key, foreign key, unique, check, join, group by, CTE.
+-- Tags: primary key, foreign key, unique, check, join, group by, CTE.
 
--- ======================================
+-- ==================
 -- table declarations
--- ======================================
+-- ==================
 
 CREATE TABLE IF NOT EXISTS departments (
     dept_id SERIAL PRIMARY KEY,
@@ -20,9 +20,9 @@ CREATE TABLE IF NOT EXISTS employees (
 );
 
 
--- ======================================
+-- ============
 -- data inserts
--- ======================================
+-- ============
 
 INSERT INTO departments (dept_name)
 VALUES
@@ -38,9 +38,9 @@ VALUES
 ('zhihu', '123-12-1234', 150, 3);
 
 
--- ======================================
+-- =======
 -- queries
--- ======================================
+-- =======
 
 SELECT
     e.emp_name,
@@ -57,9 +57,9 @@ ORDER BY d.dept_name DESC;
 -- SELECT * FROM employees LIMIT 20;
 
 
--- ======================================
+-- =============================
 -- CTE (Common Table Expression)
--- ======================================
+-- =============================
 
 WITH grouped_emp AS (
     SELECT
@@ -79,9 +79,9 @@ INNER JOIN grouped_emp AS g
 ORDER BY d.dept_id;
 
 
--- ======================================
+-- ==========
 -- query plan
--- ======================================
+-- ==========
 
 ANALYZE VERBOSE employees;
 EXPLAIN SELECT * FROM employees;

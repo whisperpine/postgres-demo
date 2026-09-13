@@ -1,8 +1,8 @@
--- tags: partition.
+-- Tags: partition.
 
--- ======================================
+-- ==================
 -- table declarations
--- ======================================
+-- ==================
 
 CREATE TABLE IF NOT EXISTS events (
     event_id SERIAL,
@@ -30,9 +30,9 @@ FROM ('2025-01-01')
 TO ('2026-01-01');
 
 
--- ======================================
+-- ============
 -- data inserts
--- ======================================
+-- ============
 
 INSERT INTO events (event_name, event_timestamp)
 VALUES
@@ -41,9 +41,9 @@ VALUES
 ('Tom caught Jerry again', '2025-07-28');
 
 
--- ======================================
+-- =======
 -- queries
--- ======================================
+-- =======
 
 SELECT * FROM events
 WHERE event_timestamp < now();

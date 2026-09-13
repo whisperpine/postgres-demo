@@ -1,17 +1,17 @@
--- tags: trigger, function.
+-- Tags: trigger, function.
 
--- ======================================
+-- ==================
 -- table declarations
--- ======================================
+-- ==================
 
--- create a table to store employee data
+-- Creates a table to store employee data.
 CREATE TABLE employees (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     salary NUMERIC NOT NULL CHECK (salary > 0)
 );
 
--- create an audit table to log insertions
+-- Create an audit table to log insertions.
 CREATE TABLE employee_audit (
     audit_id SERIAL PRIMARY KEY,
     employee_id INT REFERENCES employees(id),
@@ -20,11 +20,11 @@ CREATE TABLE employee_audit (
 );
 
 
--- ======================================
+-- =====================
 -- function declarations
--- ======================================
+-- =====================
 
--- create a function to handle the trigger logic
+-- Create a function to handle the trigger logic.
 CREATE OR REPLACE FUNCTION log_employee_insert()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -35,9 +35,9 @@ END;
 $$ LANGUAGE plpgsql;
 
 
--- ======================================
+-- =======
 -- trigger
--- ======================================
+-- =======
 
 CREATE TRIGGER employee_insert_trigger
 AFTER INSERT ON employees
@@ -45,9 +45,9 @@ FOR EACH ROW
 EXECUTE FUNCTION log_employee_insert();
 
 
--- ======================================
+-- ============
 -- data inserts
--- ======================================
+-- ============
 
 INSERT INTO employees (name, salary)
 VALUES
@@ -55,9 +55,9 @@ VALUES
 ('yahaha', 80000);
 
 
--- ======================================
+-- =======
 -- queries
--- ======================================
+-- =======
 
 SELECT * FROM employees;
 SELECT * FROM employee_audit;
