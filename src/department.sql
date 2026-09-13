@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS employees (
     emp_name VARCHAR(50) NOT NULL,
     emp_ssn VARCHAR(30) NOT NULL UNIQUE,
     emp_salary NUMERIC(9, 2) NOT NULL CHECK (emp_salary > 0),
-    emp_dept_id INT REFERENCES departments (dept_id)
+    emp_dept_id INT REFERENCES departments(dept_id)
     ON UPDATE CASCADE
     ON DELETE CASCADE
 );

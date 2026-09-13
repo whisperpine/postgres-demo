@@ -14,7 +14,7 @@ CREATE TABLE employees (
 -- create an audit table to log insertions
 CREATE TABLE employee_audit (
     audit_id SERIAL PRIMARY KEY,
-    employee_id INT REFERENCES employees (id),
+    employee_id INT REFERENCES employees(id),
     action VARCHAR(50) NOT NULL,
     action_time TIMESTAMP NOT NULL
 );
