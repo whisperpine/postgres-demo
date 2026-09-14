@@ -113,10 +113,17 @@ CREATE TYPE order_status AS ENUM ('pending', 'paid', 'cancelled');
 CREATE TABLE orders (
     id UUID PRIMARY KEY DEFAULT uuidv7(),
     customer_id UUID REFERENCES customers(id),
+    -- Note: In real-world cases, we may need an extra table to store the
+    -- modification history of this column, as well as the "updated_tz" column.
     status ORDER_STATUS NOT NULL DEFAULT 'pending',
+    -- Third party (e.g. Stripe) may provide a reference number.
+    third_party_ref TEXT,
+    -- The amount to pay.
     total_cents INTEGER NOT NULL,
     currency CHAR(3) NOT NULL,
-    created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+    -- Timestamps.
+    created_tz TIMESTAMPTZ NOT NULL DEFAULT now(),
+    updated_tz TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
 -- =======
